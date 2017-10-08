@@ -3,7 +3,7 @@ $homeWorkNum = '2.3';
 $homeWorkCaption = 'PHP и HTML.';
 $testsReady = false;
 $fileName = 'tests.json';
-$filePath = __DIR__ . '/uploadedFiles/'.$fileName;
+$filePath = __DIR__ . '/uploadedFiles/' . $fileName;
 $additionalHint = '';
 
 /* проверяем есть ли файл и если да - получаем его содержимое */

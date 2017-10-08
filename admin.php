@@ -3,7 +3,7 @@ $homeWorkNum = '2.3';
 $homeWorkCaption = 'PHP и HTML.';
 $fileReady = false;
 $fileName = 'tests.json';
-$filePath = __DIR__ . '/uploadedFiles/'.$fileName;
+$filePath = __DIR__ . '/uploadedFiles/' . $fileName;
 $additionalHint = '';
 if (isset($_FILES['myfile'])) {
     $file = $_FILES['myfile'];
@@ -59,6 +59,7 @@ function clear_dir($dir)
       form {
         display: inline-block;
       }
+
       div {
         text-align: center;
       }
@@ -67,17 +68,19 @@ function clear_dir($dir)
   <body>
     <h1>Интерфейс загрузки файла</h1>
     <p>На этой странице необходимо выбрать и загрузить json-файл с тестами для дальнейшей работы.</p>
-    <p>Для этих целей можно использовать файл tests.json по ссылке: <a href="tests.json">открыть</a>, <a href="tests.json" download="">скачать</a>.</p>
+    <p>Для этих целей можно использовать файл tests.json по ссылке: <a href="tests.json">открыть</a>,
+      <a href="tests.json" download="">скачать</a>.
+    </p>
 
     <form method="post" action="" enctype="multipart/form-data">
       <fieldset>
+
         <?php
         if (!$fileReady or isset($_POST['ShowAdminLoadForm'])) {
         ?>
 
         <!-- Форма загрузки файла, когда файл еще не загружен или нажали ShowAdminLoadForm -->
         <legend>Загрузка файла</legend>
-
         <label>Файл: <input type="file" name="myfile"></label>
         <hr>
         <p><?= ($fileReady) ? "Файл $fileName уже загружен, можно перейти к тестам" : $additionalHint ?></p>
@@ -85,9 +88,9 @@ function clear_dir($dir)
           <input type="submit" name="LoadFileToServer" value="Отправить новый файл на сервер">
           <input type="submit" name="ClearFilesFolder" value="Очистить папку"
                  title="При нажатии папка с загруженными файлами на сервере будет очищена">
-          <?php if ($fileReady) { /* выводим кнопку перехода к тестам если файл есть на диске */?>
-          <input type="submit" formaction="list.php" name="ShowTestsList" value="К тестам =>"
-                 title="Перейти в выполнению тестов">
+          <?php if ($fileReady) { /* выводим кнопку перехода к тестам если файл есть на диске */ ?>
+            <input type="submit" formaction="list.php" name="ShowTestsList" value="К тестам =>"
+                   title="Перейти в выполнению тестов">
           <?php } ?>
         </div>
 

@@ -18,7 +18,7 @@ $textMark = $_SESSION['userName'] . ', Ваша оценка: ' . ($finalMark < 
 $textErrors = 'Допущено ошибок: ' . $_SESSION['errorCounts'] . '.';
 $textDate = date('H:i   d.m.y');
 
-imagettftext($image, 18, 0, 60, 140, $textColor, $fontFile, $textTestName);
+imagettftext($image, (mb_strlen($textTestName)>50 ? 12 : 14 ), 0, 60, 140, $textColor, $fontFile, $textTestName);
 imagettftext($image, 14, 0, 60, 170, $textColor, $fontFile, $textMark);
 imagettftext($image, 14, 0, 60, 200, $textColor, $fontFile, $textErrors);
 imagettftext($image, 12, 0, 340, 280, $textColor, $fontFile, $textDate);

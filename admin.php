@@ -1,6 +1,6 @@
 <?php
-$homeWorkNum = '2.2';
-$homeWorkCaption = 'Обработка форм.';
+$homeWorkNum = '2.3';
+$homeWorkCaption = 'PHP и HTML.';
 $fileReady = false;
 $fileName = 'tests.json';
 $filePath = __DIR__ . '/uploadedFiles/'.$fileName;
@@ -15,6 +15,10 @@ if (isset($file['name']) && !empty($file['name'])) {
         $file['error'] == UPLOAD_ERR_OK &&
         move_uploaded_file($file['tmp_name'], $filePath)) {
         $fileReady = true;
+        if (!headers_sent()) {
+            header('Location: list.php'); /*при успешной загрузке - перенаправляем на список тестов */
+            exit;
+        }
     } else {
         $additionalHint = 'Файл не загружен (возможно тип файла не подходит), попробуйте еще раз.';
     }

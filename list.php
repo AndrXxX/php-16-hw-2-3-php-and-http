@@ -1,12 +1,14 @@
 <?php
-$homeWorkNum = '2.2';
-$homeWorkCaption = 'Обработка форм.';
+$homeWorkNum = '2.3';
+$homeWorkCaption = 'PHP и HTML.';
 $testsReady = false;
+$fileName = 'tests.json';
+$filePath = __DIR__ . '/uploadedFiles/'.$fileName;
 $additionalHint = '';
 
 /* проверяем есть ли файл и если да - получаем его содержимое */
-if (is_file(__DIR__ . '/uploadedFiles/tests.json')) {
-    $tests = json_decode(file_get_contents(__DIR__ . '/uploadedFiles/tests.json'), true);
+if (is_file($filePath)) {
+    $tests = json_decode(file_get_contents($filePath), true);
     $testsReady = true;
 }
 

@@ -137,8 +137,8 @@ function elementStyle($labelName, $answer, $rightAnswers, $warningStyle, $rightS
                     элементов типа radio, ставим атрибут Checked, если кнопка была нажата - загружаем как было установлено
                     пользователем */
 
-                    if (isset($_POST['ShowTestResults'])) {
-                        /* если нажали кнопку ShowTestResults */
+                    if (isset($_POST['ShowTestResults']) && !empty($_POST['UserName'])) {
+                        /* если нажали кнопку ShowTestResults и имя заполнено */
 
                         $labelStyle = elementStyle($labelName, $answer, $question['rightAnswers'], $warningStyle, $rightStyle);
                         /* определяем стиль элемента (в зависимости от наличия / отсутствия ошибки) */

@@ -1,15 +1,27 @@
 <?php
 $homeWorkNum = '2.3';
 $homeWorkCaption = 'PHP и HTML.';
+$filesPath = __DIR__ . '/uploadedFiles/';
 $testsReady = false;
-$fileName = 'tests.json';
-$filePath = __DIR__ . '/uploadedFiles/' . $fileName;
 $additionalHint = '';
 
-/* проверяем есть ли файл и если да - получаем его содержимое */
-if (is_file($filePath)) {
-    $tests = json_decode(file_get_contents($filePath), true);
+/* проверяем список json файлов с тестами и собираем массив из их названий */
+$testFilesList = getNamesJson($filesPath);
+if (count($testFilesList) > 0) {
+
+    $tests = array();
+    foreach ($testFilesList as $fileName) {
+        $tests[] = json_decode(file_get_contents($filesPath . $fileName), true)['testName'];
+    }
     $testsReady = true;
+}
+
+/* функция возвращает массив с именами json-файлов (с тестами) */
+function getNamesJson($dir)
+{
+    $array = array_diff(scandir($dir), array('..', '.'));
+    sort($array);
+    return $array;
 }
 
 ?>
@@ -19,15 +31,7 @@ if (is_file($filePath)) {
   <head>
     <title>Домашнее задание по теме <?= $homeWorkNum ?> <?= $homeWorkCaption ?></title>
     <meta charset="utf-8">
-    <style>
-      form {
-        display: inline-block;
-      }
-
-      div {
-        text-align: center;
-      }
-    </style>
+    <link rel="stylesheet" href="./css/styles.css">
   </head>
   <body>
     <h1>Интерфейс выбора варианта теста</h1>
@@ -42,11 +46,11 @@ if (is_file($filePath)) {
             $i = 0;
             foreach ($tests as $testNum => $test):
                 $i++;
-                $needChecked = ($i == 1 ? 'Checked' : '');
+                $needChecked = ($i === 1 ? 'Checked' : '');
         ?>
 
         <p><label><input type="radio" name="testNum"
-                         value="<?= $testNum ?>" <?= $needChecked ?>><?= $test['testName'] ?></label></p>
+                         value="<?= $testNum ?>" <?= $needChecked ?>><?= $test ?></label></p>
 
         <?php endforeach; ?>
 

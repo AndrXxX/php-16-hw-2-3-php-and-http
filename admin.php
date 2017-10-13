@@ -154,9 +154,9 @@ function get_hash_json($dir)
     <h1>Интерфейс загрузки файла</h1>
 
     <p>На этой странице необходимо выбрать и загрузить json-файл с тестами для дальнейшей работы.</p>
-    <p>Для этих целей можно использовать файлы: <a href="./examplesTests/english.json" download="">english.json</a>,
-      <a href="./examplesTests/multiplication.json" download="">multiplication.json</a> и
-      <a href="./examplesTests/units.json" download="">units.json</a> .</p>
+    <p>Для этих целей можно использовать файлы: <a href="./exampleTests/english.json" download="">english.json</a>,
+      <a href="./exampleTests/multiplication.json" download="">multiplication.json</a> и
+      <a href="./exampleTests/units.json" download="">units.json</a> .</p>
     <p>В форму загрузки встроена проверка загружаемого файла на наличие на сервере (по хешу).</p>
     <p>Если загружаемый файл уже есть на сервере, то он не будет загружен.</p>
 
